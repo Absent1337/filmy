@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Miłosz Gałecki\\Desktop\\Movie Library\\Backend\\API2\\API2.csproj": {}
+    "C:\\Users\\Miłosz Gałecki\\Desktop\\filmy\\API2\\API2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Miłosz Gałecki\\Desktop\\Movie Library\\Backend\\API2\\API2.csproj": {
+    "C:\\Users\\Miłosz Gałecki\\Desktop\\filmy\\API2\\API2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Miłosz Gałecki\\Desktop\\Movie Library\\Backend\\API2\\API2.csproj",
+        "projectUniqueName": "C:\\Users\\Miłosz Gałecki\\Desktop\\filmy\\API2\\API2.csproj",
         "projectName": "API2",
-        "projectPath": "C:\\Users\\Miłosz Gałecki\\Desktop\\Movie Library\\Backend\\API2\\API2.csproj",
+        "projectPath": "C:\\Users\\Miłosz Gałecki\\Desktop\\filmy\\API2\\API2.csproj",
         "packagesPath": "C:\\Users\\Miłosz Gałecki\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Miłosz Gałecki\\Desktop\\Movie Library\\Backend\\API2\\obj\\",
+        "outputPath": "C:\\Users\\Miłosz Gałecki\\Desktop\\filmy\\API2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Miłosz Gałecki\\AppData\\Roaming\\NuGet\\NuGet.Config",
