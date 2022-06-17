@@ -187,6 +187,9 @@ export default {
         })
         .then(() => {
           this.refreshData();
+        })
+        .catch((error) => {
+          console.log(error.Response.data.error);
         });
     },
     updateClick() {
@@ -198,15 +201,23 @@ export default {
         })
         .then(() => {
           this.refreshData();
+        })
+        .catch((error) => {
+          console.log(error.Response.data.error);
         });
     },
     deleteClick(id) {
       if (!confirm("Czy na pewno chcesz to zrobić?")) {
         return;
       }
-      axios.delete("https://localhost:7017/api/Movie/" + id).then(() => {
-        this.refreshData();
-      });
+      axios
+        .delete("https://localhost:7017/api/Movie/" + id)
+        .then(() => {
+          this.refreshData();
+        })
+        .catch((error) => {
+          console.log(error.Response.data.error);
+        });
     },
   },
   mounted: function () {
