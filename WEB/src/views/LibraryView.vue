@@ -76,7 +76,7 @@
             </div>
             <button
               type="button"
-              v-if="MovieID == 0"
+              v-if="MovieID == 0 && $v.MovieTitle.required"
               class="btn btn-primary"
               data-bs-dismiss="modal"
               @click="createClick()"
@@ -85,7 +85,7 @@
             </button>
             <button
               type="button"
-              v-if="MovieID != 0"
+              v-if="MovieID != 0 && $v.MovieTitle.required"
               class="btn btn-primary"
               data-bs-dismiss="modal"
               @click="updateClick()"
