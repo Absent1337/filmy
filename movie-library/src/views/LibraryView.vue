@@ -67,11 +67,12 @@
             ></button>
           </div>
           <div class="modal-body">
-            <div class="input-group mb-3">
+            <div class="input-group mb-3" v-on:submit.prevent="submit">
               <span class="input-group-text">Tytuł</span>
-              <input type="text" class="form-control" v-model="MovieTitle" />
+              <input type="text" :class="{'is-invalid': validationStatus($v.MovieTitle)}" class="form-control" v-model="$v.MovieTitle.$model" />
               <span class="input-group-text">Rok wydania</span>
-              <input type="number" class="form-control" v-model="ReleaseYear" />
+              <input type="number" class="form-control" v-model="$v.ReleaseYear.$model" />
+              <div v-if="!$v.MovieTitle.required" class="invalid-feedback">Pole tytuł nie może być puste</div>
             </div>
             <button
               type="button"
@@ -99,6 +100,7 @@
 </template>
 <script>
 import axios from "axios";
+import {minLength, maxLength, between, required} from 'vuelidate/lib/validators';
 
 export default {
   name: "LibraryView",
@@ -111,7 +113,23 @@ export default {
       MovieID: "",
     };
   },
+  validations:{
+    MovieTitle: {
+      required,
+      minLength: minLength(1),
+      maxLength: maxLength(200),
+    },
+    ReleaseYear:{
+      minLength: minLength(1),
+      maxLength: maxLength(4),
+      between: between(1900,2100)
+    }
+
+  },
   methods: {
+    validationStatus: function(validation){
+      return typeof validation != "undefined" ? validation.$error : false;
+    },
     refreshData() {
       axios
         .get("https://localhost:7017/api/Movie")

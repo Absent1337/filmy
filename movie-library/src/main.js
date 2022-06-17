@@ -6,6 +6,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import axios from 'axios';
 import "./style.css";
+import Vuelidate from 'vuelidate';
 
 Vue.config.productionTip = false
 
@@ -18,6 +19,7 @@ const axiosPlugin = {
   }
 }
 Vue.use(axiosPlugin);
+Vue.use(Vuelidate)
 
 new Vue({
   router,
