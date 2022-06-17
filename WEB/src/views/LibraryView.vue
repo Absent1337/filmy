@@ -72,7 +72,7 @@
               <input type="text" :class="{'is-invalid': validationStatus($v.MovieTitle)}" class="form-control" v-model="$v.MovieTitle.$model" />
               <span class="input-group-text">Rok wydania</span>
               <input type="number" class="form-control" v-model="$v.ReleaseYear.$model" />
-              <div v-if="!$v.MovieTitle.required" class="invalid-feedback">Pole tytuł nie może być puste</div>
+              <span v-if="!$v.MovieTitle.required" class="invalid-feedback">Pole tytuł nie może być puste</span>
             </div>
             <button
               type="button"
