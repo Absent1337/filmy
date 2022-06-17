@@ -18,7 +18,7 @@
         <thead class="table-dark">
           <tr>
             <th class="text-center">Tytuł</th>
-            <th class="text-center">Rok wydania</th>
+            <th class="text-center">Rok produkcji</th>
             <th class="text-center">Opcje</th>
           </tr>
         </thead>
