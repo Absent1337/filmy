@@ -1,7 +1,6 @@
 <template>
   <div>
     <div>
-      <!--<h1>Strona w trakcie budowy</h1>-->
       <h2 class="d-flex justify-content-center">Lista Filmów</h2>
       <div class="d-flex justify-content-center">
         <button
@@ -18,7 +17,6 @@
       <table class="table table-striped">
         <thead class="table-dark">
           <tr>
-            <!--<th>ID</th> -->
             <th class="text-center">Tytuł</th>
             <th class="text-center">Rok wydania</th>
             <th class="text-center">Opcje</th>
@@ -26,7 +24,6 @@
         </thead>
         <tbody class="table-secondary">
           <tr v-for="m in movies" :key="m.id">
-            <!-- <td>{{ m.id }}</td> -->
             <td class="text-center">{{ m.title }}</td>
             <td class="text-center">{{ m.release_year }}</td>
             <td class="text-center">
