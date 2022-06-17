@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h2 class="d-flex justify-content-center">Lista Filmów</h2>
+      <h2 class="d-flex justify-content-center">Moje filmy</h2>
       <div class="d-flex justify-content-center">
         <button
           class="btn btn-outline-primary m-2"
