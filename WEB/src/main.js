@@ -4,21 +4,12 @@ import router from './router'
 import store from './store'
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
-import axios from 'axios';
 import "./style.css";
 import Vuelidate from 'vuelidate';
+import './api'
 
 Vue.config.productionTip = false
 
-const api = axios.create({
-  baseURL: "http://localhost:8080/"
-})
-const axiosPlugin = {
-  install(Vue){
-    Vue.prototype.$api = api;
-  }
-}
-Vue.use(axiosPlugin);
 Vue.use(Vuelidate)
 
 new Vue({

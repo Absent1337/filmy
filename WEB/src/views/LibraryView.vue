@@ -159,7 +159,7 @@ export default {
     },
     refreshData() {
       axios
-        .get("https://localhost:7017/api/Movie")
+        .get('movie')
         .then((Response) => {
           this.movies = Response.data;
         })
@@ -181,7 +181,7 @@ export default {
     },
     createClick() {
       axios
-        .post("https://localhost:7017/api/Movie", {
+        .post('movie', {
           title: this.MovieTitle,
           release_year: this.ReleaseYear,
         })
@@ -194,7 +194,7 @@ export default {
     },
     updateClick() {
       axios
-        .put("https://localhost:7017/api/Movie", {
+        .put('movie', {
           id: this.MovieID,
           title: this.MovieTitle,
           release_year: this.ReleaseYear,
@@ -211,7 +211,7 @@ export default {
         return;
       }
       axios
-        .delete("https://localhost:7017/api/Movie/" + id)
+        .delete('movie/' + id)
         .then(() => {
           this.refreshData();
         })
