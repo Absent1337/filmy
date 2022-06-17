@@ -67,16 +67,43 @@
             ></button>
           </div>
           <div class="modal-body">
-            <div class="input-group mb-3" v-on:submit.prevent="submit">
+            <div class="input-group mb-3">
               <span class="input-group-text">Tytuł</span>
-              <input type="text" :class="{'is-invalid': validationStatus($v.MovieTitle)}" class="form-control" v-model="$v.MovieTitle.$model" />
+              <input
+                type="text"
+                :class="{ 'is-invalid': $v.MovieTitle.$error }"
+                class="form-control"
+                v-model="$v.MovieTitle.$model"
+              />
               <span class="input-group-text">Rok wydania</span>
-              <input type="number" class="form-control" v-model="$v.ReleaseYear.$model" />
-              <span v-if="!$v.MovieTitle.required" class="invalid-feedback">Pole tytuł nie może być puste</span>
+              <input
+                type="number"
+                :class="{ 'is-invalid': $v.ReleaseYear.$error }"
+                class="form-control"
+                v-model="$v.ReleaseYear.$model"
+              />
+              <span v-if="!$v.MovieTitle.required" class="invalid-feedback"
+                >Pole tytuł nie może być puste</span
+              >
+              <span v-if="!$v.MovieTitle.maxLength" class="invalid-feedback"
+                >Pole tytuł nie może zawierać wiecej niż 200 znaków</span
+              >
+              <span v-if="!$v.ReleaseYear.maxLength" class="invalid-feedback"
+                >Podaj poprawny rok</span
+              >
+              <span v-if="!$v.ReleaseYear.between" class="invalid-feedback"
+                >Podaj rok pomiędzy 1900-2100</span
+              >
             </div>
             <button
               type="button"
-              v-if="MovieID == 0 && $v.MovieTitle.required"
+              v-if="
+                MovieID == 0 &&
+                $v.MovieTitle.required &&
+                $v.MovieTitle.maxLength &&
+                $v.ReleaseYear.maxLength &&
+                $v.ReleaseYear.between
+              "
               class="btn btn-primary"
               data-bs-dismiss="modal"
               @click="createClick()"
@@ -85,7 +112,13 @@
             </button>
             <button
               type="button"
-              v-if="MovieID != 0 && $v.MovieTitle.required"
+              v-if="
+                MovieID != 0 &&
+                $v.MovieTitle.required &&
+                $v.MovieTitle.maxLength &&
+                $v.ReleaseYear.maxLength &&
+                $v.ReleaseYear.between
+              "
               class="btn btn-primary"
               data-bs-dismiss="modal"
               @click="updateClick()"
@@ -100,7 +133,7 @@
 </template>
 <script>
 import axios from "axios";
-import {minLength, maxLength, between, required} from 'vuelidate/lib/validators';
+import { maxLength, between, required } from "vuelidate/lib/validators";
 
 export default {
   name: "LibraryView",
@@ -113,21 +146,18 @@ export default {
       MovieID: "",
     };
   },
-  validations:{
+  validations: {
     MovieTitle: {
       required,
-      minLength: minLength(1),
       maxLength: maxLength(200),
     },
-    ReleaseYear:{
-      minLength: minLength(1),
+    ReleaseYear: {
       maxLength: maxLength(4),
-      between: between(1900,2100)
-    }
-
+      between: between(1900, 2100),
+    },
   },
   methods: {
-    validationStatus: function(validation){
+    validationStatus: function (validation) {
       return typeof validation != "undefined" ? validation.$error : false;
     },
     refreshData() {
